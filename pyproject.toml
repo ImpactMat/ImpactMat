@@ -1,0 +1,22 @@
+[project]
+name = "impactmat"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "torch",
+  "torchlibrosa",
+  "tqdm",
+  "soundfile"
+]
+
+[project.scripts]
+impactmat-infer-wavs = "apcl.infer_wavs:main"
+
+[project.urls]
+Homepage = "https://impactmat.github.io/ImpactMat/"
+Repository = "https://github.com/ImpactMat/ImpactMat"
+Paper = "https://arxiv.org/abs/2610.07061"
+
+[tool.setuptools.packages.find]
+include = ["apcl*"]

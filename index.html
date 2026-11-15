@@ -200,8 +200,6 @@
   model-viewer{width:100%;height:240px;border-radius:12px;border:1px solid var(--line);
     background:radial-gradient(130% 130% at 50% 0%,var(--accent-soft),transparent 75%);
     --poster-color:transparent}
-  .btn.soon,.btn-sm.soon{opacity:.55;cursor:default;pointer-events:none;box-shadow:none}
-  .soon small{font-size:.78em;font-weight:500;opacity:.85}
 </style>
 <script type="module" src="assets/js/model-viewer.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
@@ -245,7 +243,7 @@
       <a class="btn pri" href="https://arxiv.org/pdf/2610.07061" target="_blank" rel="noopener">&#128196; Paper</a>
       <a class="btn" href="https://arxiv.org/abs/2610.07061" target="_blank" rel="noopener">arXiv</a>
       <a class="btn" href="https://github.com/ImpactMat/ImpactMat" target="_blank" rel="noopener">&#60;/&#62; Code</a>
-      <span class="btn soon" aria-disabled="true">&#128190; ImpactMat Dataset <small>(Soon)</small></span>
+      <a class="btn" href="https://huggingface.co/datasets/BumsooKim00/nisr-dataset" target="_blank" rel="noopener">&#129303; Dataset</a>
     </div>
   </div>
 </header>
@@ -473,7 +471,7 @@
     <h2>Results</h2>
     <p class="lead">Our model achieves lower MAE than each baseline across all jointly evaluated parameters, with
       Avg.&nbsp;NMAE of <b>0.078</b> on single-material impacts and <b>0.116</b> on blends. It runs in
-      <b>6.1&nbsp;ms</b> per query, compared with seconds for the audio&ndash;language baselines and 190&nbsp;ms for
+      <b>6.1&nbsp;ms</b> per query, compared with seconds for the audio&ndash;language baselines and 19&nbsp;min for
       optimization-based estimation.</p>
     <div class="tablewrap">
       <table class="res">
@@ -485,7 +483,7 @@
           <tr><td>Blend</td><td>0.257</td><td>0.495</td><td>0.067</td><td>8.23</td><td>1.73&times;10<sup>-1</sup></td><td>1.162</td></tr>
           <tr><td rowspan="2" class="mid">Audio Flamingo 3</td><td rowspan="2" class="mid">ICL</td><td>Single</td><td>14.1</td><td>2.14</td><td>0.130</td><td>21.7</td><td>1.8&times;10<sup>-2</sup></td><td>12.42</td><td rowspan="2" class="mid">4.4 (s)</td><td rowspan="2" class="mid">18.3 GB</td></tr>
           <tr><td>Blend</td><td>13.4</td><td>2.33</td><td>0.123</td><td>11.3</td><td>4.4&times;10<sup>-2</sup></td><td>10.92</td></tr>
-          <tr><td rowspan="2" class="mid">DiffSound</td><td rowspan="2" class="mid">Optimization</td><td>Single</td><td>N/A</td><td>0.893</td><td>0.890</td><td>N/A</td><td>N/A</td><td>&ndash;</td><td rowspan="2" class="mid">190 (m)</td><td rowspan="2" class="mid">2.0 GB</td></tr>
+          <tr><td rowspan="2" class="mid">DiffSound</td><td rowspan="2" class="mid">Optimization</td><td>Single</td><td>N/A</td><td>0.893</td><td>0.890</td><td>N/A</td><td>N/A</td><td>&ndash;</td><td rowspan="2" class="mid">19 (m)</td><td rowspan="2" class="mid">2.0 GB</td></tr>
           <tr><td>Blend</td><td>N/A</td><td>0.487</td><td>0.696</td><td>N/A</td><td>N/A</td><td>&ndash;</td></tr>
           <tr class="ours"><td rowspan="2" class="mid">Ours</td><td rowspan="2" class="mid">Feed-forward</td><td>Single</td><td>0.081</td><td>0.140</td><td>0.008</td><td>0.59</td><td>2.39&times;10<sup>-8</sup></td><td><b>0.078</b></td><td rowspan="2" class="mid">6.1 (ms)</td><td rowspan="2" class="mid">1.33 GB</td></tr>
           <tr class="ours"><td>Blend</td><td>0.119</td><td>0.206</td><td>0.012</td><td>1.08</td><td>1.32&times;10<sup>-8</sup></td><td><b>0.116</b></td></tr>

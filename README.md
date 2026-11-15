@@ -4,7 +4,8 @@ Official implementation of [ImpactMat](https://arxiv.org/abs/2610.07061):
 continuous material estimation for inverse impact sound rendering.
 
 [Project page](https://impactmat.github.io/ImpactMat/) ·
-[Paper](https://arxiv.org/abs/2610.07061)
+[Paper](https://arxiv.org/abs/2610.07061) ·
+[Checkpoint](https://github.com/ImpactMat/ImpactMat/releases/download/v1.0.0/impactmat.pt)
 
 This repository combines the ImpactMat material-parameter estimator with the modal
 impact-sound renderer and dataset-generation pipeline used by the project.
@@ -83,7 +84,7 @@ multi-hit inference, and CPU/GPU notes.
 
 | Checkpoint | Config | Description |
 | --- | --- | --- |
-| `impactmat.pt` | `configs/impactmat/default.json` | Paper model trained with single- and blended-material supervision |
+| [`impactmat.pt`](https://github.com/ImpactMat/ImpactMat/releases/download/v1.0.0/impactmat.pt) | `configs/impactmat/default.json` | Paper model trained with single- and blended-material supervision |
 
 `Single` and `Blend` in the paper are evaluation subsets of this same model,
 not separate checkpoints. The public checkpoint corresponds to the paper model

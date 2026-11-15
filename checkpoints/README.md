@@ -3,7 +3,9 @@
 Put the downloaded paper checkpoint here. Model weights are intentionally not
 tracked by Git.
 
-Google Drive download: _link will be added before the public release._
+Download: [`impactmat.pt`](https://github.com/ImpactMat/ImpactMat/releases/download/v1.0.0/impactmat.pt)
+
+Release page: [ImpactMat v1.0.0](https://github.com/ImpactMat/ImpactMat/releases/tag/v1.0.0)
 
 Expected files:
 

@@ -5,6 +5,8 @@ tracked by Git.
 
 Download: [`impactmat.pt`](https://github.com/ImpactMat/ImpactMat/releases/download/v1.0.0/impactmat.pt)
 
+> The direct link above immediately starts a 947 MB download.
+
 Release page: [ImpactMat v1.0.0](https://github.com/ImpactMat/ImpactMat/releases/tag/v1.0.0)
 
 Expected files:

@@ -5,10 +5,10 @@ continuous material estimation for inverse impact sound rendering.
 
 [Project page](https://impactmat.github.io/ImpactMat/) ·
 [Paper](https://arxiv.org/abs/2610.07061) ·
-[Checkpoint](https://github.com/ImpactMat/ImpactMat/releases/download/v1.0.0/impactmat.pt)
+[Checkpoint release (947 MB)](https://github.com/ImpactMat/ImpactMat/releases/tag/v1.0.0)
 
-This repository combines the ImpactMat material-parameter estimator with the modal
-impact-sound renderer and dataset-generation pipeline used by the project.
+This repository combines the ImpactMat material-parameter estimator with the
+modal impact-sound renderer and dataset-generation pipeline used by the project.
 
 ## Repository Layout
 
@@ -84,7 +84,11 @@ multi-hit inference, and CPU/GPU notes.
 
 | Checkpoint | Config | Description |
 | --- | --- | --- |
-| [`impactmat.pt`](https://github.com/ImpactMat/ImpactMat/releases/download/v1.0.0/impactmat.pt) | `configs/impactmat/default.json` | Paper model trained with single- and blended-material supervision |
+| [`Download impactmat.pt (947 MB)`](https://github.com/ImpactMat/ImpactMat/releases/download/v1.0.0/impactmat.pt) | `configs/impactmat/default.json` | Paper model trained with single- and blended-material supervision |
+
+> **Download notice:** the checkpoint link starts the 947 MB download
+> immediately. Visit the [v1.0.0 release page](https://github.com/ImpactMat/ImpactMat/releases/tag/v1.0.0)
+> first if you want to review the file details and SHA-256 checksum.
 
 `Single` and `Blend` in the paper are evaluation subsets of this same model,
 not separate checkpoints. The public checkpoint corresponds to the paper model
@@ -95,6 +99,47 @@ The prediction target is:
 ```text
 [log_E, log_rho, nu, log_alpha, log_beta]
 ```
+
+## Renderer And Dataset Generation
+
+The included renderer converts a 3D mesh and continuous material parameters
+`[rho, E, nu, alpha, beta]` into an impact waveform. It is the forward process
+paired with the estimator: the estimator predicts material parameters from
+audio, and the renderer applies those parameters to a target object.
+
+```text
+OBJ mesh -> voxel grid -> FEM modal analysis -> modal features -> impact WAV
+               geometry      rho, E, nu          alpha, beta + strike
+```
+
+The pipeline supports the eight base materials as well as arbitrary continuous
+parameters. To generate a dataset, run it across object meshes and material
+settings, then vary the strike index, timing, and gain to create multiple impact
+recordings for each object-material condition. Each run can retain the voxel
+grid, FEM modes, modal features, and rendered WAVs as reproducible artifacts.
+
+Quick start on a built-in box:
+
+```bash
+cd renderer
+uv sync
+uv run python examples/quickstart.py
+```
+
+For an OBJ stored at `renderer/data/meshes/6/model.obj`:
+
+```bash
+uv run python -m impactmat.cli all --obj-id 6
+uv run python -m impactmat.cli render \
+  --obj-id 6 \
+  --params 7850 2e11 0.29 5 3e-8 \
+  --out custom.wav
+```
+
+The `all` command writes the voxel grid, modal data, features, and synthesized
+audio under `renderer/outputs/<obj_id>/`. See the
+[`renderer` guide](renderer/README.md) for CPU/CUDA voxelization, configuration,
+material presets, and Python API examples.
 
 ## Training And Evaluation
 

@@ -26,7 +26,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"      # Windows
 
 # 2. clone and create the environment (Python 3.10+, installed automatically)
 git clone https://github.com/ImpactMat/ImpactMat.git
-cd impactmat
+cd ImpactMat/renderer
 uv sync
 ```
 

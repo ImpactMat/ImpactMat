@@ -29,9 +29,10 @@ sounds. Training code is included for reproducibility, while the easiest reuse
 path is checkpoint-only inference:
 
 1. Clone this repository.
-2. Download the released checkpoint into `checkpoints/`.
-3. Set up a `uv` environment.
-4. Run `impactmat-infer-wavs` on your wav files.
+2. Set up the official PANN Cnn14 dependency.
+3. Download the released ImpactMat checkpoint into `checkpoints/`.
+4. Set up a `uv` environment.
+5. Run `impactmat-infer-wavs` on your wav files.
 
 ## Quick Inference
 
@@ -51,6 +52,28 @@ uv pip install torch --index-url https://download.pytorch.org/whl/cpu
 uv pip install -e .
 ```
 
+Prepare the PANN Cnn14 source and pretrained AudioSet weights used by
+ImpactMat:
+
+```bash
+mkdir -p third_party checkpoints
+git clone https://github.com/qiuqiangkong/audioset_tagging_cnn.git \
+  third_party/audioset_tagging_cnn
+git -C third_party/audioset_tagging_cnn checkout \
+  d2f4b8c18eab44737fcc0de1248ae21eb43f6aa4
+curl -L \
+  'https://zenodo.org/records/3987831/files/Cnn14_mAP%3D0.431.pth?download=1' \
+  -o checkpoints/Cnn14_mAP=0.431.pth
+```
+
+These commands use the official
+[`qiuqiangkong/audioset_tagging_cnn`](https://github.com/qiuqiangkong/audioset_tagging_cnn)
+implementation at the revision used by ImpactMat and its official 32 kHz
+`Cnn14_mAP=0.431.pth` model from
+[Zenodo record 3987831](https://zenodo.org/records/3987831). Its expected
+SHA-256 is
+`0dc499e40e9761ef5ea061ffc77697697f277f6a960894903df3ada000e34b31`.
+
 Download checkpoint files into [`checkpoints/`](checkpoints/README.md):
 
 ```text
@@ -68,7 +91,7 @@ impactmat-infer-wavs \
   --object-id sample_object \
   --output-dir inference_output \
   --device cuda \
-  --pann-repo-root /path/to/audioset_tagging_cnn \
+  --pann-repo-root third_party/audioset_tagging_cnn \
   --pann-checkpoint-path checkpoints/Cnn14_mAP=0.431.pth
 ```
 

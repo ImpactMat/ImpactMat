@@ -32,6 +32,10 @@ Edit the corresponding config fields if your datasets or PANN checkout live
 elsewhere. The generated ImpactMat dataset and renderer are documented under
 [`renderer/`](../renderer/README.md).
 
+Prepare the exact PANN source revision and `Cnn14_mAP=0.431.pth` file with the
+setup commands in the main [README](../README.md). Those paths already match
+the public config.
+
 ## Training
 
 Train the paper model directly:

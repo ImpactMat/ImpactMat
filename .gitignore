@@ -9,6 +9,7 @@ __pycache__/
 .env
 .venv/
 venv/
+third_party/
 
 # Experiment outputs
 logs/

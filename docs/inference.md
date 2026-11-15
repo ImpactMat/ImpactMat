@@ -14,6 +14,16 @@ You need:
 - the PANN CNN14 pretrained checkpoint, usually `Cnn14_mAP=0.431.pth`
 - one or more input wav files
 
+ImpactMat uses the 32 kHz `Cnn14_mAP=0.431.pth` model published by
+[`qiuqiangkong/audioset_tagging_cnn`](https://github.com/qiuqiangkong/audioset_tagging_cnn).
+Follow the PANN setup commands in the main [README](../README.md). They create
+the layout expected by the public config:
+
+```text
+third_party/audioset_tagging_cnn/
+checkpoints/Cnn14_mAP=0.431.pth
+```
+
 Put downloaded model files under the repo-local `checkpoints/` directory:
 
 ```text
@@ -27,6 +37,8 @@ inputs. These names describe dataset subsets in the paper, not separate models.
 
 Older checkpoints may store the original absolute PANN paths from training. If
 your local paths differ, pass `--pann-repo-root` and `--pann-checkpoint-path`.
+The public config and commands below use the repository-local paths created by
+that setup.
 
 ## Environment
 
@@ -74,7 +86,7 @@ impactmat-infer-wavs \
   --object-id sample_object \
   --output-dir inference_output \
   --device cuda \
-  --pann-repo-root /path/to/audioset_tagging_cnn \
+  --pann-repo-root third_party/audioset_tagging_cnn \
   --pann-checkpoint-path checkpoints/Cnn14_mAP=0.431.pth
 ```
 
@@ -106,7 +118,7 @@ impactmat-infer-wavs \
   --manifest inputs.csv \
   --output-dir inference_output \
   --device cuda \
-  --pann-repo-root /path/to/audioset_tagging_cnn \
+  --pann-repo-root third_party/audioset_tagging_cnn \
   --pann-checkpoint-path checkpoints/Cnn14_mAP=0.431.pth
 ```
 
